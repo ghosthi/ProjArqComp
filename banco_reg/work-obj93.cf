@@ -1,0 +1,19 @@
+v 4
+file . "ula.vhd" "53b2f679cc0eb085a951e711923c2eec40b4692d" "20241114000404.967":
+  entity ula at 1( 0) + 0 on 21;
+  architecture aula of ula at 19( 564) + 0 on 22;
+file . "toplevel.vhdl" "368705c1b11c84278680fead53649bdfa98293e8" "20241114000404.966":
+  entity toplevel_tb at 1( 0) + 0 on 19;
+  architecture a_toplevel_tb of toplevel_tb at 8( 117) + 0 on 20;
+file . "reg_tb.vhdl" "da3c13d7b4be874243fe95307571db10debc07a2" "20241114000404.965":
+  entity reg16bits_tb at 1( 0) + 0 on 17;
+  architecture a_reg16bits_tb of reg16bits_tb at 8( 119) + 0 on 18;
+file . "reg16bits.vhd" "005eca60355af03edf4e54c40b1eceb6a769bbe3" "20241114000404.964":
+  entity reg16bits at 1( 0) + 0 on 15;
+  architecture a_reg16bits of reg16bits at 13( 262) + 0 on 16;
+file . "banco_tb.vhdl" "fcb657f778f21ec5b960905a1c2087d8d2883678" "20241114000404.963":
+  entity bancoreg16bits_tb at 1( 0) + 0 on 13;
+  architecture a_bancoreg16bits_tb of bancoreg16bits_tb at 8( 129) + 0 on 14;
+file . "banco_reg_16bits.vhd" "dbe2ed1a38ca7f87883355d963fdb0b815dde845" "20241114000404.962":
+  entity bancoreg16bits at 1( 0) + 0 on 11;
+  architecture a_bancoreg16bits of bancoreg16bits at 17( 443) + 0 on 12;
