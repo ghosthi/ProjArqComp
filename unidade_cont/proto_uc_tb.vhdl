@@ -8,6 +8,8 @@ end entity;
 architecture a_proto_uc_tb of proto_uc_tb is
 	component proto_uc is
 		port( 
+            pc_data_in                  : in unsigned(6 downto 0);
+            pc_data_out                 : out unsigned(6 downto 0);
             clk, wr_en, rst           : in std_logic;
             rom_out                   : out unsigned(18 downto 0)
         );
@@ -16,6 +18,7 @@ architecture a_proto_uc_tb of proto_uc_tb is
     signal rom_out_tb                   : unsigned(18 downto 0);
 	signal clk_tb, rst_tb, wr_en_tb     : std_logic;
 	signal finished                     : std_logic := '0';
+    signal pc_in, pc_out : unsigned(6 downto 0) := "0000000";
 
 	constant period_time    : time := 100 ns;
 	
@@ -24,7 +27,9 @@ architecture a_proto_uc_tb of proto_uc_tb is
             rst => rst_tb,
             clk     => clk_tb,
             wr_en => wr_en_tb,
-            rom_out => rom_out_tb
+            rom_out => rom_out_tb,
+            pc_data_in => pc_in, 
+            pc_data_out => pc_out
         );
 
         sim_time_proc : process begin
@@ -50,6 +55,30 @@ architecture a_proto_uc_tb of proto_uc_tb is
             wait for period_time* 2;
             rst_tb <= '0';
             wr_en_tb <= '1';
+            pc_in <= pc_out;
+            wait for period_time* 2;
+            pc_in <= pc_out;
+            wait for period_time* 2;
+            pc_in <= pc_out;
+            wait for period_time* 2;
+            pc_in <= pc_out;
+            wait for period_time* 2;
+            pc_in <= pc_out;
+            wait for period_time* 2;
+            pc_in <= pc_out;
+            wait for period_time* 2;
+            pc_in <= pc_out;
+            wait for period_time* 2;
+            pc_in <= pc_out;
+            wait for period_time* 2;
+            pc_in <= pc_out;
+            wait for period_time* 2;
+            pc_in <= pc_out;
+            wait for period_time* 2;
+            pc_in <= pc_out;
+            wait for period_time* 2;
+            pc_in <= pc_out;
+            wait for period_time* 2;
             
             wait for period_time * 10;
             wait;
