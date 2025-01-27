@@ -10,12 +10,10 @@ architecture a_proto_uc_tb of proto_uc_tb is
 		port( 
             pc_data_in                  : in unsigned(6 downto 0);
             pc_data_out                 : out unsigned(6 downto 0);
-            clk, wr_en, rst           : in std_logic;
-            rom_out                   : out unsigned(18 downto 0)
+            clk, wr_en, rst           : in std_logic
         );
 	end component;
 	
-    signal rom_out_tb                   : unsigned(18 downto 0);
 	signal clk_tb, rst_tb, wr_en_tb     : std_logic;
 	signal finished                     : std_logic := '0';
     signal pc_in, pc_out : unsigned(6 downto 0) := "0000000";
@@ -27,7 +25,6 @@ architecture a_proto_uc_tb of proto_uc_tb is
             rst => rst_tb,
             clk     => clk_tb,
             wr_en => wr_en_tb,
-            rom_out => rom_out_tb,
             pc_data_in => pc_in, 
             pc_data_out => pc_out
         );

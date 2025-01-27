@@ -6,8 +6,7 @@ entity proto_uc is
     port(
         pc_data_in                  : in unsigned(6 downto 0);
         pc_data_out                 : out unsigned(6 downto 0);
-        clk, wr_en, rst             : in std_logic;
-        rom_out                     : out unsigned(18 downto 0) 
+        clk, wr_en, rst             : in std_logic
     );
 end entity proto_uc;
 
@@ -22,14 +21,6 @@ architecture a_proto_uc of proto_uc is
             data_out  : out unsigned(6 downto 0) := "0000000"
         );
     end component;
-
-    component rom is
-		port(	
-            clk     : in std_logic;
-            address     : in unsigned(6 downto 0);
-            output      : out unsigned(18 downto 0) 
-		);
-	end component;
     
     signal pc_in, pc_out : unsigned(6 downto 0);
 
@@ -42,12 +33,6 @@ begin
         wr_en => wr_en, 
         data_in => pc_in, 
         data_out => pc_out
-    );
-
-    readonlymem : ROM port map(
-        clk     => clk,
-        address => pc_out,
-        output  => rom_out
     );
 
     pc_data_out <= pc_in + "0000001";
