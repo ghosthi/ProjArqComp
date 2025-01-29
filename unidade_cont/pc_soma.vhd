@@ -2,15 +2,15 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity proto_uc is
+entity pc_soma is
     port(
-        pc_data_in                  : in unsigned(6 downto 0);
-        pc_data_out                 : out unsigned(6 downto 0);
+        data_in                  : in unsigned(6 downto 0);
+        data_out                 : out unsigned(6 downto 0);
         clk, wr_en, rst             : in std_logic
     );
-end entity proto_uc;
+end entity pc_soma;
 
-architecture a_proto_uc of proto_uc is
+architecture a_pc_soma of pc_soma is
     
     component program_counter is
         port(
@@ -22,10 +22,10 @@ architecture a_proto_uc of proto_uc is
         );
     end component;
     
-    signal pc_in, pc_out : unsigned(6 downto 0);
+    signal pc_in, pc_out : unsigned(6 downto 0) := "0000000";
 
 begin
-    pc_in <= pc_data_in;
+    pc_in <= data_in;
 
     pc : program_counter port map (
         clk => clk, 
@@ -35,6 +35,6 @@ begin
         data_out => pc_out
     );
 
-    pc_data_out <= pc_in + "0000001";
-    
-end a_proto_uc;
+    data_out <= pc_out + "0000001" WHEN wr_en = '1' ELSE pc_out;
+
+end a_pc_soma;

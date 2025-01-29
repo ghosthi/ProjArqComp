@@ -2,11 +2,11 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity proto_uc_tb is
+entity pc_soma_tb is
 end entity;
 
-architecture a_proto_uc_tb of proto_uc_tb is
-	component proto_uc is
+architecture a_pc_soma_tb of pc_soma_tb is
+	component pc_soma is
 		port( 
             pc_data_in                  : in unsigned(6 downto 0);
             pc_data_out                 : out unsigned(6 downto 0);
@@ -21,7 +21,7 @@ architecture a_proto_uc_tb of proto_uc_tb is
 	constant period_time    : time := 100 ns;
 	
     begin
-        program_c : proto_uc port map(
+        program_c : pc_soma port map(
             rst => rst_tb,
             clk     => clk_tb,
             wr_en => wr_en_tb,
@@ -80,5 +80,5 @@ architecture a_proto_uc_tb of proto_uc_tb is
             wait for period_time * 10;
             wait;
         end process testing_process;
-end architecture a_proto_uc_tb;
+end architecture a_pc_soma_tb;
 		
