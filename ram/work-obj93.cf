@@ -1,0 +1,34 @@
+v 4
+file . "ula.vhd" "ce488040ca6f6c3dad30c322e8b28cfdffa11cfc" "20250219082843.848":
+  entity ula at 1( 0) + 0 on 31;
+  architecture aula of ula at 19( 564) + 0 on 32;
+file . "uc.vhd" "355ad84c90602461758e4ddbc14262a466b5a8b4" "20250219082843.846":
+  entity uc at 1( 0) + 0 on 29;
+  architecture a_uc of uc at 25( 1079) + 0 on 30;
+file . "rom.vhdl" "7a04331f44498f171a21dd4958123924e31d52c9" "20250219082843.822":
+  entity rom at 1( 0) + 0 on 27;
+  architecture a_rom of rom at 14( 306) + 0 on 28;
+file . "regInst.vhd" "05308c8b3c957fa76e81ffdbb1d17de8001fb495" "20250219082843.821":
+  entity reginst at 1( 0) + 0 on 25;
+  architecture a_reginst of reginst at 13( 260) + 0 on 26;
+file . "reg16bits.vhd" "005eca60355af03edf4e54c40b1eceb6a769bbe3" "20250219082843.820":
+  entity reg16bits at 1( 0) + 0 on 23;
+  architecture a_reg16bits of reg16bits at 13( 262) + 0 on 24;
+file . "ram.vhd" "f3ac8e673e3a881bec826c18f12162cf17470f45" "20250219082843.820":
+  entity ram at 1( 0) + 0 on 21;
+  architecture a_ram of ram at 15( 477) + 0 on 22;
+file . "program_counter.vhd" "1e88ce5618df4ad771a2cdf382383b73eef07ef3" "20250219082843.819":
+  entity program_counter at 1( 0) + 0 on 19;
+  architecture a_program_counter of program_counter at 13( 292) + 0 on 20;
+file . "processador_tb.vhdl" "b63762b7fc3a76b7381eedccd26b2f63b5b01d9d" "20250219082843.818":
+  entity processador_tb at 1( 0) + 0 on 17;
+  architecture a_processador_tb of processador_tb at 8( 115) + 0 on 18;
+file . "pc_soma.vhd" "0d398d012c20c1bd74e44d0f85859dba2099b3b0" "20250219082843.817":
+  entity pc_soma at 1( 0) + 0 on 15;
+  architecture a_pc_soma of pc_soma at 13( 310) + 0 on 16;
+file . "maquinaestados.vhdl" "48adf36d7baf43b6857b272916d68c6505c734af" "20250219082843.816":
+  entity maquinaestados at 1( 0) + 0 on 13;
+  architecture a_maq_estados of maquinaestados at 13( 220) + 0 on 14;
+file . "banco_reg_16bits.vhd" "dbe2ed1a38ca7f87883355d963fdb0b815dde845" "20250219082843.815":
+  entity bancoreg16bits at 1( 0) + 0 on 11;
+  architecture a_bancoreg16bits of bancoreg16bits at 17( 443) + 0 on 12;
