@@ -1,0 +1,89 @@
+
+LARGURA ROM / INSTRUCAO: 19 BITS
+
+FORMATO DE INSTRUCAO:
+    I   -- Instruções com imediato (subi, )
+        I: bits do imediato
+        S: reg source
+        O: bits do Opcode
+        IIIIIIIIIIII_SSS_OOOO
+    
+    
+    R   -- Instruções entre registradores (addo, subo)
+        O: bits do Opcode
+        S: reg source
+        XXXXXXXXXXXX_SSS_OOOO
+
+    B   -- Branch condicional
+        O: bits do Opcode
+        S: reg source 
+        D: Endereço de destino (ROM)
+        XX_DDDDDDD_XXX_SSS_OOOO
+
+    J   -- Branch incondicional (JMP)
+        O: bits do Opcode
+        D: Endereço de destino (ROM)
+        DDDDDDDDDDDD_XXX_OOOO
+
+    L -- LD
+        I: bits do imediato
+        O: bits do Opcode
+        D: Reg de destino
+        IIIIIIIIIIII_DDD_OOOO
+        
+    M -- STORE ( D <= A )
+        O: bits do Opcode
+        D: Reg de destino
+        XXXXXXXXXXXX_DDD_OOOO
+
+      -- MOV ( A <= S )
+        O: bits do Opcode
+        S: Reg de font
+        XXXXXXXXXXXX_SSS_OOOO
+
+X: Indiferente para a instrução
+
+CODIGOS DOS REGS:
+    x0: 001
+    x1: 010
+    x2: 011
+    x3: 100
+    x4: 101
+ 
+OPCODES:
+    NOP:        0000
+    
+    -- FORMATO R
+        ADD ops:    0010
+
+        SUB ops:    0100
+        SUB s/b:    0111
+        DEC:        0001
+
+    -- FORMATO I
+        SUB imm:    0101
+    
+    -- FORMATO L
+        LD:         1000
+        MOV:        1011
+        STORE:      1101
+
+    -- FORMATO B
+        BVS:        1010
+        BNE:        1100
+
+    -- FORMATO J
+        JMP:        1111
+
+OPCODES INVÁLIDOS:
+    0011
+    0110 
+    1001  
+    1110
+
+EXCEPTION CODES:
+    00  Sem exceção
+    01  
+    10  OPCODE invalido
+    11  
+
