@@ -1,0 +1,61 @@
+
+--# Loop carregando na RAM
+"000000100000_001_1000" -- LD r1, 32;		r1 <= 32
+
+"000000000000_001_1011" -- LOAD r1;		A <= r1		    -- A = 32		--- Linha bne r1, -5
+"000000000000_001_0110" -- SW $r1;			MEM[$r1] <= A 	-- MEM[32] = A = 32
+"000000000000_000_0001" -- DEC;			A -= 1;		    -- A = 31
+"000000000000_001_1101" -- STORE r1;		r1 <= A		    -- r1 = A = 31
+"000000000000_000_1011" -- LOAD zero;		A <= zero       -- A = 0
+"111111111011_001_1100" -- BNE r1, -5;			    	    -- n preencheu os 32 end de mem, volta p linhas 3
+
+--# Eliminando multiplos de 1
+"000000000001_010_1000" -- LD r2, 1;		r2 <= 1	        -- primo
+"000000000001_011_1000" -- LD r3, 1;		r3 <= 1		    -- ingremento dos multiplos
+"000000000000_100_1000" -- LD r4, 0;                       -- CONTROLE LOOP MULTIPLOS
+"000000000001_101_1000" -- LD r5, 1;                       -- Icremento para cada numero
+
+--# =============================
+--# CORE DO BAGULHO
+--# =============================
+
+--# volta BNE FINAL
+"000000000000_010_0011" -- LW $r2			A <= MEM[$r2] 	-- A = x		
+"000000000000_101_0010" -- ADD r5	        A += r5 (r5 = 1
+"000000000000_010_1101" -- STORE r2        r2 <= A
+"000000000000_011_1101" -- STORE r3        r3 <= A
+"000000000000_011_0010" -- ADD r3;			A += r3 	    -- segundo multiplo do primo x
+"000000000000_010_1101" -- STORE r2;		r2 <= A		    -- r2 = 2x
+"000000000000_000_1011" -- LOAD zero;		A <= zero = 0	    -- zera A 		
+"000000000000_010_0110" -- SW $r2;			MEM[$r2] <= A	-- zera registo r2 da mem	 (VOLTA BNE
+
+
+"000000000000_011_1011" -- LOAD r3;		A <= r3 = x	    -- passo da soma (multiplos sao de x em x
+"000000000000_010_0010" -- ADD r2;			A += r2		    -- soma o proximo multiplo
+"000000000000_010_1101" -- STORE r2;		r2 <= A		    -- r2 = valor do proximo multiplo
+"000000000000_010_0011" -- LW $r2;			A <= MEM[$r2]	-- valor de mem do proximo multp
+"000000000000_100_1101" -- STORE r4;		r4 <= A		    -- carrega valor de mem para comparar se já n acabou os numero na ram
+"000000000000_001_1011" -- LOAD r1;		A <= r1 = 32    -- A <= 32
+"111111111001_011_1100" -- BNE r3,-7;				        -- se nao acabou os numeros da ram (r4 == 0 volta -7 linha
+
+--# INCREMENTE R2
+"000000000000_011_1011" -- LOAD r3                         -- A <= r3 = x
+"000000000000_101_0010" -- ADD r5;                         -- A <= A + R5 (R5 = 1
+"111111101111_001_1100" -- BNE r1, -17;                    -- SE A < 32
+
+
+--# =============================
+--# CORE DO BAGULHO
+--# =============================
+
+
+--# Ler a ram
+
+"000000100001_001_1000", -- LD r1, 33;		r1 <= 33
+"000000000000_011_1000", -- LD r3, 0;	
+"000000000000_001_0011", --LW $r1;			A <= MEM[$r1]   -- A <= MEM[32]
+"000000000000_011_1101", --STORE r3;		r3 <= A		    -- r3 = A
+"000000000000_001_1011", --LOAD r1;		A <= r1		    -- A = 32		
+"000000000000_000_0001", --DEC;			A -= 1;		    -- A = 31
+"000000000000_001_1101",  --STORE r1;		r1 <= A
+"111111111100_000_1100", --BNE zero, -4; -- n iterou até 0

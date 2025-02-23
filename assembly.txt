@@ -1,0 +1,54 @@
+-- Loop carregando na RAM
+LD r1, 32;		r1 <= 32
+
+LOAD r1;		A <= r1		    -- A = 32		--- Linha bne r1, -5
+SW $r1;			MEM[$r1] <= A 	-- MEM[32] = A = 32
+DEC;			A -= 1;		    -- A = 31
+STORE r1;		r1 <= A		    -- r1 = A = 31
+LOAD zero;		A <= zero       -- A = 0
+BNE r1, -5;			    	    -- n preencheu os 32 end de mem, volta p linhas 3
+
+-- Eliminando multiplos de x (sendo x um primo)
+LD r2, x;		r2 <= x		    -- primo
+LD r3, x;		r4 <= x		    -- ingremento dos multiplos
+LD r4, 0;                       -- CONTROLE LOOP MULTIPLOS
+LD r5, 1;                       -- Icremento para cada numero
+
+
+
+-- volta BNE FINAL
+LW $r2			A <= MEM[$r2] 	-- A = x		
+ADD r5	        A += r5 (r5 = 1)
+STORE r2        r2 <= A
+STORE r3        r3 <= A
+ADD r3;			A += r3 	    -- segundo multiplo do primo x
+STORE r2;		r2 <= A		    -- r2 = 2x
+LOAD zero;		A <= zero = 0	    -- zera A 		
+SW $r2;			MEM[$r2] <= A	-- zera registo r2 da mem	 (VOLTA BNE)
+
+
+LOAD r3;		A <= r3 = x	    -- passo da soma (multiplos sao de x em x)
+ADD r2;			A += r2		    -- soma o proximo multiplo
+STORE r2;		r2 <= A		    -- r2 = valor do proximo multiplo
+LW $r2;			A <= MEM[$r2]	-- valor de mem do proximo multp
+STORE r4;		r4 <= A		    -- carrega valor de mem para comparar se já n acabou os numero na ram
+LOAD r1;		A <= r1 = 32    -- A <= 32
+BNE r3,-7;				        -- se nao acabou os numeros da ram (r4 == 0) volta -7 linha
+
+-- INCREMENTE R2
+LOAD r3                         -- A <= r3 = x
+ADD r5;                         -- A <= A + R5 (R5 = 1)
+BNE r1, -17;                    -- SE A < 32
+
+
+
+
+-- Ler a ram
+LD r1, 32;		r1 <= 32
+LD r3, 0;		r3 <= 0
+
+LW $r1;			A <= MEM[$r1]   -- A <= MEM[32]
+STORE r3;		r3 <= A		    -- r3 = A
+LOAD r1;		A <= r1		    -- A = 32		
+DEC;			A -= 1;		    -- A = 31
+BNE r1, -4;			    	    -- n preencheu os 32 end de mem, volta p linhas 3
