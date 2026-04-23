@@ -49,7 +49,7 @@ begin
 
     --'BVS'
         --Só há estouro de números signed se somarmos dois números que têm um mesmo sinal e se o resultado tiver o sinal contrário
-    ovfl <=     '1' when ent1(15) = ent2(15) AND saida(15) /= ent2(15) else '0';
+    ovfl <=     '1' when ent1(11) = ent2(11) AND saida(11) /= ent2(11) else '0';
 
     --'BNE'
     zero <=     '1' when saida = "0000000000000000" else '0';

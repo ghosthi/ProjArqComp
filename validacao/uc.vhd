@@ -36,7 +36,7 @@ begin
     opcode <= instr(3 downto 0);
 
     -- CALCULAR AQ CASO BNE OU BVS    
-    jump_cond <= '1' WHEN opcode = "1010" AND ovfl_ula = '1' AND instr_fetch = "01" ELSE
+    jump_cond <= '1' WHEN opcode = "1010" AND ovfl_ula = '0' AND instr_fetch = "01" ELSE
                  '1' WHEN opcode = "1100" AND zero_ula = '0' AND instr_fetch = "01" ELSE
                  '0';
 
